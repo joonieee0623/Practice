@@ -1,0 +1,122 @@
+<RDBMS 테이블 용어>
+1.릴레이션(Relation): 엔티티(==table)
+2.속성(Attribute): 엔티티 특성(==Column)==field
+3.(릴레이션)스키마Schema: 속성들의 집합
+4.Domain: 열(속성값들의 범주)
+5.Tuple: 행(==Row)==Record
+6.(릴레이션)인스턴스(Instance): 튜플들의 집합
+-- Python의 tuple과 의미 다름
+
+<SQL(Structured Query Language)> 5가지
+1. DQL(Data Query Language)
+2. DML(Data Manipulation Language)
+3. TCL(Transaction Control Language)
+4. DDL(Data Definition Language)
+5. DCL(Data Control Language) -> grant(권한부여)
+
+CMD
+1. C:\Users\PC>cd \
+2. C:\>mysql -u scott -ptiger -h localhost python_schema
+3. MariaDB [python_schema]> select user();
+4. MariaDB [python_schema]> show tables;
+5. MariaDB [python_schema]> desc emp;
+6. MariaDB [python_schema]> select job from emp;
+ ㄴ MariaDB [python_schema]> select (all) job from emp (all이 숨겨져있음 default값)
+7. MariaDB [python_schema]> select distinct job from emp; (distinct : 중복데이터 제거)
+8. MariaDB [python_schema]> select empno, sal from emp;
+9. MariaDB [python_schema]> select empno, sal from emp order by empno;(순서대로)
+10.MariaDB [python_schema]> select empno, sal from emp order by empno asc;(asc는 default값- 오름차순)
+11.MariaDB [python_schema]> select empno, sal from emp order by empno desc;(desc : 내림차순 describe랑 약자는 같음!)
+12.MariaDB [python_schema]> sysetem cls; (그냥 C에서는 cls만 쳐도 되지만, 지금은 mariadb 안)
+
+-- 모든 사원의 사번과 급여 출력
+13.MariaDB [python_schema]> select empno, sal from emp; --PK Cloumn의 오름차순
+14.MariaDB [python_schema]> select empno, sal from emp order by empno asc; --상동 
+
+-- 모든 사원의 사번과 급여 출력(단, 급여가 적은 순으로)
+15.MariaDB [python_schema]> select empno, sal from emp order by sal;(asc 생략)
+
+-- 모든 사원의 사번과 급여 출력(단, 급여가 많은 순으로)
+16.MariaDB [python_schema]> select empno, sal from emp order by sal desc;
+
+-- 모든 사원의 사번과 급여를 출력(급여가 높은 순, 같은 급여일 땐 empno)
+17.MariaDB [python_schema]> select empno, sal from emp order by sal desc, empno;
+
+-- 모든 사원의 사번과 커미션을 출력(커미션 낮 or 높 순)
+18.MariaDB [python_schema]> select empno, comm from emp order by comm;
+19.MariaDB [python_schema]> select empno, comm from emp order by comm desc;
+
+--(null 제외한)모든 사원의 사번과 커미션을 출력
+20.MariaDB [python_schema]> select empno, comm from emp where comm is not null;
+
+--(null 제외한)모든 사원의 사번과 커미션을 출력(단, 커미션이 높은순으로 정렬)
+21.MariaDB [python_schema]> select empno, comm from emp where comm is not null order by comm desc;
+
+--JOB에 대해서 오름차순 정렬한 후, 급여(sal)가 높은순으로 정렬
+22.MariaDB [python_schema]> select * from emp;
+23.MariaDB [python_schema]> select job, sal from emp order by job, sal desc;
+
+--(부서번호가 20인) 사번과 부서번호 출력
+24.MariaDB [python_schema]> select empno, deptno from emp where deptno = 20;
+
+--30번 부서인 사번(empno)과 sal과 부서번호deptno를 출력(단, 급여가 높은 순)
+25.MariaDB [python_schema]> select empno, sal, deptno from emp where deptno=30 order by sal desc;
+
+-- 입사일이 81년 12월 3일 이후의 '사번과 이름과 입사일과 부서번호' 출력(단, 사번의 내림차순)
+26.MariaDB [python_schema]> desc emp; (->HIREDATE 입사일)
+27.MariaDB [python_schema]> select empno, ename, hiredate, deptno from emp where hiredate>='1981-12-03' order by empno desc;
+MariaDB [python_schema]> select empno, ename, hiredate, deptno from emp
+	where hiredate>='1981-12-03'
+	order by empno desc; (--상동)
+	
+-- 입사일이 81년 12월 3일 이후의 '사번과 이름과 입사일과 부서번호' 출력(단, 사번의 내림차순, 20번부서만)
+28.MariaDB [python_schema]> select empno, ename, hiredate, deptno from emp where hiredate>='1981-12-03' and deptno =20 order by empno desc;
+MariaDB [python_schema]> select empno, ename, hiredate, deptno from emp 
+	where hiredate>='1981-12-03' and deptno =20
+	order by empno desc; (--상동)
+--별칭 == Alias
+29.MariaDB [python_schema]> select job as "직업", sal as "급여" from emp;
+ㄴ MariaDB [python_schema]> select job "직업", sal "급여" from emp; 
+ㄴ MariaDB [python_schema]> select job 직업, sal 급여 from emp; (as 생략 가능)
+ㄴ MariaDB [python_schema]> select job 직업, sal "1234" from emp; (문자열)
+ㄴ MariaDB [python_schema]> select job 직업, sal "!@#$" from emp; (문자열)
+ㄴ MariaDB [python_schema]> select job 직업, sal '급   여' from emp; (문자열)
+ㄴ MariaDB [python_schema]> select job j, sal s from emp;
+
+--30번 부서 사원의 급여를 10% 인상해서 사번empno과 급여sal를 출력
+30.MariaDB [python_schema]> select empno, sal*1.1 as sal from emp where deptno=30;(산술 연산자(+,-,*,/)
+
+--30번 부서 사원의 '연말보너스'를 이름과 함께 연말보너스를 출력(연말보너스가 높은 순. 단, 연말보너스는 급여의 2배와 커미션의 1/2의 합)
+31.MariaDB [python_schema]> select ename, sal*2+comm*0.5 as "연말보너스" from emp where deptno=30 order by "연말보너스" desc;
+ㄴ BRAKE, JAMES는 comm가 없어서 NULL 나옴 -> NULL comm을 '0'으로 간주
+ㄴ MariaDB [python_schema]> select ename, sal*2+nvl(comm,0)/2 연말보너스 from emp where deptno=30 order by 연말보너스 desc;
+ㄴ MariaDB [python_schema]> select ename, sal*2+nvl(comm,0)*0.5 as "연말보너스" from emp where deptno=30 order by "연말보너스" desc;
+
+--급여가 3000 이상인 사원의 이름과 급여를 출력
+33.MariaDB [python_schema]> select ename, sal from emp where sal>=3000;
+
+--30번 부서가 아닌 사원의 이름과 급여와 부서번호를 출력(부서번호의 오름차순, 높은 급여순, 이름 오름차순)
+34.MariaDB [python_schema]> select ename, sal, deptno from emp where deptno!=30 order by deptno, sal desc, ename asc; --asc 생략가능
+
+--20번 부서이면서 급여 3000이상인 사원의 이름, 급여, 부서번호를 출력--논리연산자(and, or, not)
+35.MariaDB [python_schema]> select ename, sal, deptno from emp where deptno=20 and sal>=3000;
+
+--업무가 'SALESMAN'이고 부서번호가 30번인 이름, 직업, 부서번호를 출력
+36.MariaDB [python_schema]> select ename job, deptno from emp where job='SALESMAN' and deptno=30;
+
+--급여가 1000미만이거나, 4000이상인 사원의 사번, 급여를 출력
+37.MariaDB [python_schema]> select empno, sal from emp where sal<1000 or sal>=4000;
+ㄴ MariaDB [python_schema]> select empno, sal from emp where not(sal>=1000 and sal<4000);
+
+--부서번호가 10 or 20 or 100 인 사원의 부서번호와 이름을 출력
+38.MariaDB [python_schema]> select deptno, ename from emp where deptno=10 or deptno=20 or deptno=100;
+
+--SQL 연산자(in, all, between, like, is null, is not null, exists)
+39.MariaDB [python_schema]> select deptno, ename from emp where deptno in(10,20,100); --38과 결과 같음
+
+--30번 부서의 최대 급여보다 더 큰 급여를 받는 사원의 이름, 급여 출력
+	select sal from emp where deptno=30 (-> 30번 부서의 모든 급여)
+40.MariaDB [python_schema]> select ename, sal from emp where sal> all(select sal from emp where deptno=30);
+	all은 모두 만족시켜야 true
+	MariaDB [python_schema]> select max(sal) from emp where deptno=30; (최대값)
+41.MariaDB [python_schema]> select ename, sal from emp where sal>(select max(sal) from emp where deptno=30);--40과 결과같음

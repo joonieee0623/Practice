@@ -1,0 +1,41 @@
+# ===== 접속 정보 =====
+config.py
+db_config.py
+.env
+*.ini
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+penv/
+.venv/
+venv/
+
+# ===== Windows =====
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ===== macOS =====
+.DS_Store
+
+# ===== VSCode =====
+.vscode/
+
+# ===== 로그 =====
+*.log
+
+# ===== 설치 파일 · 대용량 =====
+*.exe
+*.msi
+*.zip
+*.7z
+*.iso
+
+# ===== 데이터 및 문서 파일 =====
+*.csv
+*.xlsx
+*.xls
+
+# ===== 제외할 폴더 =====
+Python/day05/

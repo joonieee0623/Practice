@@ -1,0 +1,148 @@
+
+ C:\Users\PC>cd \
+ C:\>mysql -u scott -ptiger -h localhost python_schema
+
+
+1. 최대 급여를 받는 사원의 이름을 출력
+MariaDB [python_schema]> select ename, sal from emp where sal = (select max(sal) from emp);
+
+<Function>
+어떤 '일'을 수행하는 기능으로써 주어진 인수(argument)를 재료로 '처리'하여, 그 결과를 'return'하는 일
+
+<기능에 따른 분류>
+1) Data 계산
+2) Data 변환
+
+<행에 따른 분류>
+1) 단일행 함수(ex: nvl,..)
+	-> 하나의 행(row)당, 하나의 결과값을 리턴하는 함수
+2) 복수행 함수(ex : max, min, avg,..)
+	-> 여러개의 행(row)당, 하나의 결과값을 리턴하는 함수
+	
+====================================================================================================	
+[단일행]	
+1. 문자함수
+
+1) chr
+MariaDB [python_schema]> select chr(65);
+
+<concat>
+MariaDB [python_schema]> select ename, job from emp;
+MariaDB [python_schema]> select concat(ename, 'is a', job) from emp;
+
+3) lower
+select lower('MY NAME IS SOO');
+MariaDB [python_schema]> select lower(ename) from emp;
+
+4) upper
+MariaDB [python_schema]> select upper(ename) from emp;
+MariaDB [python_schema]> select upper(lower(ename)) from emp;
+
+5) trim과 length
+MariaDB [python_schema]> select '	Hello world		';
+MariaDB [python_schema]> select length('	Hello world		'); --14
+MariaDB [python_schema]> select trim('	Hello world		');
+MariaDB [python_schema]> select length(trim('	Hello world		')); --14
+
+6) ltrim(left trim), rtrim(right trim)
+MariaDB [python_schema]> select length(ltrim('	Hello world		'));
+MariaDB [python_schema]> select length(rtrim('	Hello world		'));
+
+7) replace
+파이썬에선 ""와 '' 같았지만, 마리아는 항상 ''
+select repalce('JALCK and JLUE', 'J', 'B');
+MariaDB [python_schema]> select dname from dept;
+MariaDB [python_schema]> select repalce(dname, 'A', 'a') from dept;
+-error
+
+9) substr 또는 substring
+select substr('ABCDEFG', 3, 2);
+
+--ename의 두번 째 자리가 'A'인 사원 이름 출력
+select ename from emp where ename like '_A%';
+select ename from emp where where substr(ename, 2, 1) = 'A';
+-error
+
+10) ascii
+select ascii('A'); --65
+select ascii('a'); --97
+select ascii(' '); --32
+select ascii('3'); --51
+select ascii('#'); --35
+
+11) greatest
+select greatest('CC', 'ABCD', 'CA');
+select greatest('12', '132', '119');
+select greatest('CC', 'ABCD', 'CA');
+
+12) nvl
+select ename, comm from emp;
+select ename, nvl(comm, -1) from emp;
+
+2. 숫자 함수
+
+1) abs
+select abs(-10); -- 거리 / 수평선상에서 0과의 거리
+
+2) ceil 올림
+select ceil(11.012); --12
+select ceil(-11.012); -- -11(-12와 -11의 거리)
+
+3) floor 내림
+select floor(11.999); -- 11
+select floor(11.999); -- -12
+
+4) round 반올림
+select round(12.5); --13 가까워지는 쪽
+select round(-12.5); -- -13 멀어지는 쪽
+
+5) cos
+select cos(90); 
+select cos(90*3.141592/180); -- 0에 수렴(정확한 0은 될 수 없음(3.14....이기 때문)0.00000032679489653813835 
+	digree를 radia로 바꿔줌
+
+6) sin
+select sin(90*3.141592/180); -- 1에 수렴
+
+7) tan
+select tan(45*3.141592/180); -- 1에 수렴
+
+8) log
+select log(10,100); -- 2
+
+9) mod 나머지
+select mod(11, 4); --3
+파이썬에선 연산자가 있지만, 여긴 함수로 사용
+
+10) power
+select power(2, 3); -- 8 (2의 3승)
+select power(2, 50)/(100*100*1000); -- 신문지를 50번 접으면 그 두께가? 단, 100장=1cm
+
+11) truncate 
+select truncate(15.789,2); -- 15.78
+select truncate(15.789,0); -- 15
+select truncate(-15.789,2); -- -15.78
+
+3. 날짜 함수
+db에서밖에 처리할 수 없어 중요
+1) sysdate 또는 now
+select sysdate();
+
+now 오라클엔 없음
+select now();
+
+2) date__add 날짜 자동 계산
+select hiredate from emp where empno=7782;
+select hiredate, date_add(hiredate, interval 7 month)from emp where empno=7782;
+	select hiredate다음에 , -> 비교해서 출력
+
+3) last_day
+select str_to_date('26/8/05', '%y/%m/%d');
+select last_day(str_to_date('26/8/05', '%y/%m/%d')); -- 2026-08-31
+select hiredate, last_day(hiredate) from emp;
+
+=============================================================================================
+
+[복수행 함수(Group Function]
+
+1.

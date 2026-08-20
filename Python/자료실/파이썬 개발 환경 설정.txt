@@ -1,0 +1,94 @@
+< 파이썬 개발 환경 설정 >
+
+1. Python 3.14.5 다운/설치/확인
+   (1) https://www.python.org/downloads/windows/
+      'Stable Releases' > 'python-3.14.5-amd64.exe' 다운 실행
+   (2) 파일실행 > 하단의 'Add python.exe to PATH'체크 > 'Install Now'클릭
+   (3) 설치버전확인( CMD or PS 에서 )
+      C:\Users\user>python --version //Python 3.14.5
+       '또는'
+      C:\Users\user>python -V //Python 3.14.5
+   (4) 테스트
+      C:\Users\user>python
+      >>> print('Hello Python')
+      //Hello Python
+   
+2. VSCode
+   (1) https://code.visualstudio.com/download
+      > 'VSCodeUserSetup-x64-1.119.0.exe' 다운/실행
+   (2) 작업 디렉토리 생성/열기
+      C:\SOO\Python\day01 > File 의 Open Folder..
+   (3) hello.py 생성
+      print('안녕 파이썬')
+   (4) 실행
+      1) VSCode 터미널
+         - py hello.py 또는 python hello.py
+         - Extension Pack: 'Python'검색 > 우측상단의 '실행'버튼
+      2) CMD or PS 에서
+         - py hello.py 또는 python hello.py
+   (5) 폰트사이즈 변경
+      1) 코드 패널
+         Ctrl+, > 'font' > 30
+      2) 터미널 패널( '송현화' )
+         Ctrl+, > 'terminal font size' > 32
+
+3. 가상환경
+   (1) 가상환경 생성
+      C:\SOO\Python> python -m venv penv
+   (2) 활성화/비활성화
+      1) CMD
+         C:\SOO\Python> penv\Scripts\activate //활성화
+         //(penv) C:\SOO\Python>
+         (penv) C:\SOO\Python> penv\Scripts\deactivate //비활성화
+         //C:\SOO\Python>
+      2) PS
+         <1> 권한변경
+            PS > 우측마우스 > '관리자권한으로 실행'
+            PS C:\> get-ExecutionPolicy //Restricted 확인(기본값)
+            PS C:\> Set-ExecutionPolicy RemoteSigned //Y
+            PS C:\> get-Ex
+			
+			ecutionPolicy //RemoteSigned 변경확인
+         <2-1> 활성화
+            PS C:\SOO\Python> penv\Scripts\activate
+            //(penv) PS C:\SOO\Python>
+         <2-2> 비활성화
+            (penv) PS C:\SOO\Python> cd penv\Scripts
+            (penv) PS C:\SOO\Python\penv\Scripts> deactivate
+            //PS C:\SOO\Python\penv\Scripts>
+
+      3) VSCode에서도 상동
+
+
+
+4. 실행절차
+   (1) 가상환경 활성화
+      C:\SOO\Python\day01>..\penv\Scripts\activate
+      //(penv) C:\SOO\Python\day01>
+   (2) 넘파이
+      1) 설치   
+         (penv) C:\SOO\Python\day01> pip --version //pip 26.1.1   
+         (penv) C:\SOO\Python\day01> pip list //pip 26.1.1
+         (penv) C:\SOO\Python\day01> pip install numpy
+
+      2) 설치확인
+         (penv) C:\SOO\Python\day01> pip list
+         //pip 26.1.1
+         //'numpy 2.4.4' //추가 확인
+
+   (3) VSCode에서 가상환경의 인터프리터 지정하기
+      1) 'Ctrl + Shift + P' > 'Python: Select Interpreter'
+      2) 'Enter interpreter path...' > 'Find..'
+      3) C:\SOO\Python\penv\Scripts\python.exe
+
+   (4) test.py 생성해서 설치확인
+      try:
+         import numpy as np
+         print('numpy 설치 O / 버젼: ', np.__version__)
+      except:
+         print('numpy 설치 X')
+
+   (5) 실행
+      (penv) C:\SOO\Python\day01>py test.py
+      //numpy 설치 O / 버젼:  2.4.4
+
