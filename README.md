@@ -17,7 +17,7 @@
 │   ├── day02_numpy
 │   ├── day03_pandas
 │   ├── day04_matplot_seaborn
-│   └── 분석및시각화 개인 미션
+│   └── day05_crawling
 │
 └── SQL_MariaDB/
     ├── Study_08_01
