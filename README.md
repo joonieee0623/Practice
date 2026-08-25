@@ -12,20 +12,26 @@
 ## 🗂 폴더 구조
 
 ```
-├── Python_Advanced/
-│   ├── day01_pymysql
-│   ├── day02_numpy
-│   ├── day03_pandas
-│   ├── day04_matplot_seaborn
-│   └── day05_crawling
+├── MariaDB/
+│   ├── Study_08_01
+│   └── Study_08_02
 │
-├── PythonDjango
-|   ├── pj_django
-|   └── joonsapp
-|
-└── SQL_MariaDB/
-    ├── Study_08_01
-    └── Study_08_02
+├── Python/
+│   ├── day01
+│   ├── day02
+│   ├── day03
+│   └──day04
+│
+├── PythonDjango/
+│   └── pj_django/
+│       └── joonsapp/
+│
+└── Python_Advanced/
+    ├── day01_pymysql
+    ├── day02_numpy
+    ├── day03_pandas
+    ├── day04_matplot_seaborn
+    └── day05_crawling
 ```
 
 ## 🧩 다루는 것
