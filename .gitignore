@@ -39,3 +39,9 @@ $RECYCLE.BIN/
 
 # ===== 제외할 폴더 =====
 Python/day05/
+
+# ===== Django =====
+jenv/
+db.sqlite3
+media/
+staticfiles/
