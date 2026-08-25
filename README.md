@@ -19,6 +19,10 @@
 │   ├── day04_matplot_seaborn
 │   └── day05_crawling
 │
+├── PythonDjango
+|   ├── pj_django
+|   └── joonsapp
+|
 └── SQL_MariaDB/
     ├── Study_08_01
     └── Study_08_02
