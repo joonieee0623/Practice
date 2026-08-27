@@ -79,7 +79,6 @@ def update_ok(request, id):
     address.name = name
     address.addr = addr
     nowDatetime = timezone.now().strftime('%Y-%m-%d %H:%M:%S')
-    address = Address(name=name, addr=addr, rdate=nowDatetime)
     address.rdate = nowDatetime
     address.save()
     return HttpResponseRedirect(reverse('list'))
