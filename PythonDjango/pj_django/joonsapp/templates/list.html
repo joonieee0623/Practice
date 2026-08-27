@@ -18,7 +18,7 @@
 	<body style="text-align:center">
 		<center>
 			<h1>
-				Address List with Django
+				Address List with SooT
 			</h1>
 			<a href='../write'>입력</a>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,11 +34,11 @@
 
 			{% for address in addresses%}
 			<tr>
-			<td align='center'>{{address.id}}</td>
+			<td align='center'><a href='../update/{{address.id}}'>{{address.id}}</a></td>
 			<td align='center'>{{address.name}}</td>
 			<td align='center'>{{address.addr}}</td>
 			<td align='center'>{{address.rdate}}</td>
-			<td align='center'><a href='/joonsapp/del?seq={{address.id}}'>삭제</a></td>
+			<td align='center'><a href='../delete/{{address.id}}'>삭제</a></td>
 			</tr>
 			{% endfor %}
 			
