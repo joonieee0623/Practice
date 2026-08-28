@@ -3,6 +3,13 @@
     a {text-decoration:none}
 </style>
 <center>
-    <h1> Joon's Address </h1>
-    <a href="list"> 주소록 </a></br>
+    <h1> Joon's App</h1>
+    <a href="list"> 주소록 </a></br></br></br></br>
+
+    <!-- user: {{request.session.user}} -->
+    {% if request.session.user %}
+        <a href="logout"> 로그아웃</a></br>
+    {% else%}
+        <a href="login">로그인</a></br>
+    {% endif %}
 </center>
