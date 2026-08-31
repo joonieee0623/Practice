@@ -19,4 +19,14 @@ class Member(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.email})"
-    
+
+
+class Board(models.Model):
+    writer = models.CharField(max_length=200)
+    email = models.EmailField(max_length=254)
+    subject = models.CharField(max_length=400)
+    content = models.TextField()
+    rdate = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+            return self.subject

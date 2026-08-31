@@ -4,6 +4,7 @@ from django.template import loader
 from django.utils import timezone
 from django.urls import reverse
 from .models import Member
+from .models import Board
 
 def index(request):
     #return HttpResponse("<center><h3>안녕 장고:)</h3></center>")
@@ -93,7 +94,6 @@ def login_ok(request):
     email = request.POST.get('email', None)
     pwd = request.POST.get('pwd', None)
     
-
     try:
         member = Member.objects.get(email=email)
     except Member.DoesNotExist:
@@ -103,8 +103,6 @@ def login_ok(request):
         if member.pwd == pwd:
             print('비밀번호까지 일치')
             result = 2
-
-            member.pwd = ''
             request.session['user'] = member.email
         else:
             print('비밀번호 틀림')
@@ -123,3 +121,79 @@ def logout(request):
         request.session.clear() #서버측의 해당 user의 session방을 초기화
         request.session.flush() #서버측의 해당 user의 session방을 삭제
     return redirect('../')
+
+def join(request):
+    template = loader.get_template('join.html')
+    return HttpResponse(template.render({}, request))
+
+from django.http import JsonResponse
+def check_email(request):
+    email = request.GET.get('email', None)
+    is_exists = Member.objects.filter(email=email).exists()
+    data = {'is_exists': is_exists} #dict
+    return JsonResponse(data)
+
+def test1(request):
+    addresses = Address.objects.all().values()
+    template = loader.get_template('template1.html')
+    context = {
+        'yourname':'준',
+        'addresses': addresses,
+        }
+    return HttpResponse(template.render(context, request))
+
+def test2(request):
+    template = loader.get_template('template2.html')
+    context = {
+        'x': 1,
+        'y': 'tiger',
+        'fruits': ['apple', 'orange'],
+        'fruits2' : ['apple', 'orange'],
+    }
+    return HttpResponse(template.render(context,request))
+
+def test3(request):
+    addresses = Address.objects.all().values()
+    template = loader.get_template('template3.html')
+    context = {
+        'fruits' : ['apple', 'orange', 'melon'],
+        'cars' : [{'brand':'현대', 'model':'그랜저', 'year':'2026'},
+                  {'brand':'테슬라', 'model':'모델Y', 'year':'2025'}],
+        'addresses':addresses,
+    }
+    return HttpResponse(template.render(context,request))
+
+def blist(request):
+    boards = Board.objects.all().order_by('-id')
+    return render(request, 'board/list.html', {'boards': boards })
+
+def bcontent(request, id):
+    board = Board.objects.get(id=id)
+    return render(request, 'board/content.html', {'board': board})
+
+def bwrite(request):
+    return render(request, 'board/write.html')
+
+def bwrite_ok(request):
+    Board.objects.create(
+        writer=request.POST['writer'],
+        email=request.POST['email'],
+        subject=request.POST['subject'],
+        content=request.POST['content'],
+    )
+    return redirect('board_list')
+
+def bupdate(request, id):
+    board = Board.objects.get(id=id)
+    return render(request, 'board/update.html', {'board': board})
+
+def bupdate_ok(request, id):
+    board = Board.objects.get(id=id)
+    board.subject = request.POST['subject']
+    board.content = request.POST['content']
+    board.save()
+    return redirect('board_content', id=id)
+
+def bdelete(request, id):
+    Board.objects.get(id=id).delete()
+    return redirect('board_list')

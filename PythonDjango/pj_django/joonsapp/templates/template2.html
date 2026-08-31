@@ -1,0 +1,72 @@
+<p>
+{% if x == 1 %}
+    하나
+{% elif x == 2 %}
+    둘
+{% else %}
+    그 밖
+{% endif %}
+</p>
+
+<p>
+{% if y %}
+    y는 empty는 아님
+{% else %}
+    y는 empty야
+{% endif %}
+</p>
+
+<p>
+{% if x %}
+    x는 empty는 아님
+{% else %}
+    x는 empty야
+{% endif %}
+</p>
+
+<p>
+{% if x != 2 %}
+    x는 2이 아님
+{% endif %}
+</p>
+
+<p>
+{% if x < 3 %}
+    x는 보다 작다
+{% endif %}
+</p>
+<!--비교연산자 ==, !=, <, <=, >, >= -->
+
+<p>
+{% if x == 1 and y == 'tiger' or x == 3 %}
+(x는 1이고, y는 tiger) 또는 (x는 3)
+{% endif %}
+<!--  논리연산자 and or -->
+</p>
+
+<p>
+{% if 'orange' in fruits %}
+    Yes Orange
+{% else %}
+    No Orange
+{% endif %}
+</p>
+<!-- 연산자 in, not in -->
+
+<p>
+{% if fruits is fruits2 %}
+    fruits is fruits2
+{% else %}
+    fruits is not fruits2
+{% endif %}
+</p>
+<!-- is 는 같은 객체인지 비교 -->
+
+<p>
+{% if fruits == fruits2 %}
+    fruits == fruits2
+{% else %}
+    fruits != fruits2
+{% endif %}
+</p>
+<!-- == 는 같은 내용인지 비교 -->
