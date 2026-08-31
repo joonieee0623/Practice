@@ -164,7 +164,7 @@ def test3(request):
     return HttpResponse(template.render(context,request))
 
 def blist(request):
-    boards = Board.objects.all().order_by('-id')
+    boards = Board.objects.all().order_by('-rdate')
     return render(request, 'board/list.html', {'boards': boards })
 
 def bcontent(request, id):
@@ -175,13 +175,13 @@ def bwrite(request):
     return render(request, 'board/write.html')
 
 def bwrite_ok(request):
-    Board.objects.create(
         writer=request.POST['writer'],
         email=request.POST['email'],
         subject=request.POST['subject'],
         content=request.POST['content'],
-    )
-    return redirect('board_list')
+        board = Board(writer=writer, email=email, subject=subject, content=content)
+        board.save()
+        return redirect('board_list')
 
 def bupdate(request, id):
     board = Board.objects.get(id=id)
