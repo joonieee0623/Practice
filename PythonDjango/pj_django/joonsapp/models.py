@@ -30,3 +30,10 @@ class Board(models.Model):
 
     def __str__(self):
             return self.subject
+
+class Upload(models.Model):
+	title = models.CharField(max_length=200)
+	file = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=255)
+	orgfile = models.CharField(max_length=255)
+	filesize = models.IntegerField(default=0)
+	rdate = models.DateTimeField(auto_now_add=True)

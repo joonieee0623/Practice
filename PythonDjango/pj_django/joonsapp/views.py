@@ -1,10 +1,18 @@
-from django.shortcuts import render, redirect
+import os
+import json
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.utils import timezone
 from django.urls import reverse
-from .models import Member
-from .models import Board
+
+from .models import Member, Board, Upload
+
+ALLOWED = ['.jpg', '.jpeg', '.png', '.gif', '.pdf', '.txt', '.csv', '.xlsx', '.zip']
+#MAX_SIZE = 5 * 1024 * 1024 #5MB
+from django.conf import settings
+MAX_SIZE = settings.MAX_UPLOAD_MB * 1024 * 1024
+
 
 def index(request):
     #return HttpResponse("<center><h3>안녕 장고:)</h3></center>")
@@ -175,10 +183,10 @@ def bwrite(request):
     return render(request, 'board/write.html')
 
 def bwrite_ok(request):
-        writer=request.POST['writer'],
-        email=request.POST['email'],
-        subject=request.POST['subject'],
-        content=request.POST['content'],
+        writer=request.POST['writer']
+        email=request.POST['email']
+        subject=request.POST['subject']
+        content=request.POST['content']
         board = Board(writer=writer, email=email, subject=subject, content=content)
         board.save()
         return redirect('board_list')
@@ -197,3 +205,73 @@ def bupdate_ok(request, id):
 def bdelete(request, id):
     Board.objects.get(id=id).delete()
     return redirect('board_list')
+
+def upload(request):
+	template = loader.get_template('upload.html')
+	return HttpResponse(template.render({'max_mb': settings.MAX_UPLOAD_MB}, request))
+
+def upload_ok(request):
+    if request.method != 'POST':
+        return HttpResponseRedirect('../')
+
+    t = request.POST.get('title')
+    f = request.FILES.get('file')
+
+    if not t or not f:
+        return error_back('제목 또는 파일이 없습니다.')
+
+    ext = os.path.splitext(f.name)[1].lower()
+
+    if ext not in ALLOWED:
+        return error_back('허용하지 않는 확장자입니다 : ' + ext)
+
+    if f.size > MAX_SIZE:
+        return error_back('파일이 너무 큽니다 ('+ str(settings.MAX_UPLOAD_MB) +'MB 이하)')
+
+    row = Upload(title=t, file=f, orgfile=f.name, filesize=f.size)
+    row.save()
+
+    template = loader.get_template('upload_ok.html')
+    return HttpResponse(template.render({'row': row}, request))
+
+
+def error_back(msg):
+    safe_msg = json.dumps(msg)
+    html_content = f"<meta charset='utf-8'><script>alert({safe_msg}); history.back();</script>"
+    return HttpResponse(html_content)
+
+def upload_list(request):
+    rows = Upload.objects.all().order_by('-id')
+    template = loader.get_template('upload_list.html')
+    return HttpResponse(template.render({'rows': rows},request))
+
+def upload_delete(request, id):
+    row = get_object_or_404(Upload, id=id)
+    row.file.delete(save=False) #실제 파일 삭제(폴더안)
+    row.delete() #DB 레코드 삭제
+    return HttpResponse('../../list/')
+
+def chart(request):
+    template = loader.get_template('chart.html')
+    return HttpResponse(template.render({}, request))
+
+from django.db.models import Count
+def chart_data(request):
+    #select addr, count(id) as cnt from joonsapp_address group by addr order by cnt desc;
+    rows = Address.objects.values('addr').annotate(cnt=Count('id')).order_by('-cnt')
+    labels = [r['addr'] for r in rows] #['서울시', '부산시', ...]
+    data = [r['cnt'] for r in rows] #[4, 2, ...]
+    return JsonResponse({'labels':labels, 'data':data})
+
+from django.db.models.functions import TruncDate
+def chart_data2(request):
+    #select date(rdate) as d, count(id) as cnt from joonsapp_address group by d order by d;
+    rows = (Address.objects
+    .annotate(d=TruncDate('rdate'))
+    .values('d')
+    .annotate(cnt=Count('id'))
+    .order_by('d'))
+    #labels = [r['d'].strftime('%Y-%m-%d') for r in rows]
+    labels = [r['d'] for r in rows]
+    data = [r['cnt'] for r in rows]
+    return JsonResponse({'labels':labels, 'data':data})

@@ -14,7 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+DEPLOY = False  # 지금 내 PC에서 작업 중 → MySQL 사용
+#DEPLOY = True  # PythonAnywhere에 올릴 때 → SQLite 사용
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -23,10 +24,37 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--w*^$(nyn(hd-lo3itcj)-x&qr8b&r+73tv7r&2@79fvq*vwti'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = not DEPLOY
+		
+if DEPLOY:
+    ALLOWED_HOSTS = ['Cjuwon.pythonanywhere.com']
+    CSRF_TRUSTED_ORIGINS = ['https://Cjuwon.pythonanywhere.com']
+else:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.37']
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.11']
+if DEPLOY:
+		DATABASES = {
+			'default': {
+				'ENGINE': 'django.db.backends.sqlite3',
+				'NAME': BASE_DIR / 'db.sqlite3',
+			}
+		}
+else:
+		DATABASES = {
+			'default': {
+				'ENGINE': 'django.db.backends.mysql',
+				'NAME': 'django_schema',
+				'USER': 'django',
+				'PASSWORD': '1234',
+				'HOST': '127.0.0.1',
+				'PORT': '3306',
+				'OPTIONS': {
+					'charset': 'utf8mb4',
+					'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+				},
+			}
+		}
 
 # Application definition
 
@@ -73,27 +101,28 @@ WSGI_APPLICATION = 'pj_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+# if True:
+# 		DATABASES = {
+# 			'default': {
+# 				'ENGINE': 'django.db.backends.sqlite3',
+# 				'NAME': BASE_DIR / 'db.sqlite3',
+# 			}
+# 		}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_schema',
-        'USER': 'django',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-    }
-}
+# DATABASES = {
+#     'default': {
+#           'ENGINE': 'django.db.backends.mysql',
+# 			'NAME': 'django_schema',
+# 			'USER': 'django',
+# 			'PASSWORD': '1234',
+# 			'HOST': '127.0.0.1',
+# 			'PORT': '3306',
+# 			'OPTIONS': {
+# 				'charset': 'utf8mb4',
+# 				'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+# 			},
+# 		}
+# 	}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
@@ -131,14 +160,24 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+if DEPLOY:
+    MAX_UPLOAD_MB =2
+else:
+    MAX_UPLOAD_MB = 5
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+EMAIL_BACKEND =  'django.core.mail.backends.console.EmailBackend'
+
+
+SESSION_COOKIE_AGE = 1800
+SESSION_SAVE_EVERY_REQUEST = True

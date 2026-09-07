@@ -26,4 +26,12 @@ urlpatterns = [
     path('board/update/<int:id>/', views.bupdate, name='board_update'),
     path('board/update/update_ok/<int:id>/', views.bupdate_ok, name='board_update_ok'),
     path('board/delete/<int:id>/', views.bdelete, name='board_delete'),
+
+    path('upload/', views.upload, name='upload'),
+    path('upload/upload_ok/', views.upload_ok, name='upload_ok'),
+    path('upload/list/', views.upload_list, name='upload_list'),
+    path('upload/delete/<int:id>/', views.upload_delete, name='upload_delete'),
+    path('chart/', views.chart, name='chart'),
+    path('chart/chart_data/', views.chart_data, name='chart_data'),
+    path('chart/chart_data2/', views.chart_data2, name='chart_data2'),
     ]
