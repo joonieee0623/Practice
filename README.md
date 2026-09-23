@@ -5,7 +5,15 @@
 
 ### ⏱️ **6개월 단기 몰입**
 - **기간** : `2026.08` ~ `2027.01` (6개월)
-- **사용 환경** : Python, MariaDB, Git, VSCode (Windows / macOS)
+- **사용 환경** : Python, MariaDB, Django, Git, VSCode (Windows / macOS)
+
+---
+
+## 🚀 Projects
+
+| 프로젝트 | 설명 | 기간 |
+|---|---|---|
+| [🧳 모아트립](Projects/moa_trip) | 공공데이터 기반 여행 정보·일정 플랫폼 (Django 팀 프로젝트, 4인) | `2026.09.14 ~ 09.22` |
 
 ---
 
@@ -48,6 +56,12 @@
 - [x] 모델링 (ERD, 정규화)
 - [x] pymysql 연동
 - [ ] 쿼리 최적화
+
+**Web (Django)**
+- [x] Django MTV 구조 (Model·Template·View)
+- [x] 공공데이터 REST API 연동
+- [x] HTML / CSS / JavaScript
+- [x] 팀 프로젝트 Git 협업 (브랜치 · PR · 충돌 해결)
 
 **Physical AI & Development Tools**
 - [x] Git / GitHub 버전 관리
