@@ -22,9 +22,8 @@
 │   ├── day03
 │   └── day04
 │
-├── PythonDjango/
-│   └── pj_django/
-│       └── joonsapp/
+├── Projects/
+│   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
 │
 └── Python_Advanced/
     ├── day01_pymysql
