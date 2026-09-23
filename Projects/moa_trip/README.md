@@ -36,7 +36,7 @@
 
 ```
 USERS ─┬─< FAVORITE >─┐
-       ├─< REVIEW   >─┼── TOURISTSPOT >── REGION ──< WEATHERCACHE
+       ├─< REVIEW   >─┼── TOURISTSPOT >── REGION
        └─< ITINERARY ─< ITINERARY_TIME >─┘
 ```
 
@@ -45,7 +45,6 @@ USERS ─┬─< FAVORITE >─┐
 | USERS | 회원 |
 | REGION | 지역 코드 |
 | TOURISTSPOT | 관광지 (TourAPI 데이터) |
-| WEATHERCACHE | 지역별 날씨 캐시 (API 호출 절감) |
 | FAVORITE | 회원 ↔ 관광지 즐겨찾기 |
 | REVIEW | 관광지 후기 (별점, 사진) |
 | ITINERARY | 여행 일정 |
@@ -87,6 +86,6 @@ USERS ─┬─< FAVORITE >─┐
 ## 📝 배운 점
 
 - 팀 단위 Git 협업 (브랜치 → PR → 병합, 충돌 해결)
-- 공공데이터 API 연동과, 호출 결과를 DB에 캐싱하는 방식
+- 공공데이터 API(관광정보·날씨) 연동
 - 기존 DB 테이블에 Django 모델을 맞추는 방법 (`db_table`, `db_column`)
 - 템플릿 안에서 JavaScript와 Django 템플릿 태그를 함께 쓸 때 주의할 점
