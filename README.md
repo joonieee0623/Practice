@@ -20,15 +20,20 @@
 ## 🗂 폴더 구조
 
 ```
+├── AiCloud/
+│   └── pj_cloud        # RAG · Function Calling 학습 (NOTES.md 참고)
+│
 ├── MariaDB/
 │   ├── Study_08_01
-│   └── Study_08_02
+│   ├── Study_08_02
+│   └── 자료실
 │
 ├── Python/
 │   ├── day01
 │   ├── day02
 │   ├── day03
-│   └── day04
+│   ├── day04
+│   └── 자료실
 │
 ├── Projects/
 │   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
@@ -62,6 +67,12 @@
 - [x] 공공데이터 REST API 연동
 - [x] HTML / CSS / JavaScript
 - [x] 팀 프로젝트 Git 협업 (브랜치 · PR · 충돌 해결)
+
+**AI & LLM (Cloud)**
+- [x] 임베딩 · 벡터 검색 (MariaDB 저장, 코사인 유사도)
+- [x] RAG (검색 기반 답변 생성)
+- [x] PDF · 이미지 문서 처리 (텍스트 추출, OCR)
+- [x] Function Calling / Tools (외부 API 연동)
 
 **Physical AI & Development Tools**
 - [x] Git / GitHub 버전 관리
