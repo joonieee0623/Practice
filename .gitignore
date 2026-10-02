@@ -1,5 +1,5 @@
 # ===== 접속 정보 =====
-config.py
+
 db_config.py
 .env
 *.ini
@@ -32,13 +32,16 @@ $RECYCLE.BIN/
 *.7z
 *.iso
 
+
 # ===== 데이터 및 문서 파일 =====
 *.csv
 *.xlsx
 *.xls
+uploaded.pdf
 
 # ===== 제외할 폴더 =====
 Python/day05/
+poppler-*/
 
 # ===== Django =====
 jenv/
