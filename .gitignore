@@ -42,6 +42,7 @@ uploaded.pdf
 # ===== 제외할 폴더 =====
 Python/day05/
 poppler-*/
+Projects/moa_trip/moa_trip/
 
 # ===== Django =====
 jenv/
