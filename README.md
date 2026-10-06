@@ -21,7 +21,8 @@
 
 ```
 ├── AiCloud/
-│   └── pj_cloud        # RAG · Function Calling 학습 (NOTES.md 참고)
+│   └── pj_cloud/
+│       └── RAGstudy    # RAG · Function Calling 학습 (NOTES.md 포함)
 │
 ├── MariaDB/
 │   ├── Study_08_01
