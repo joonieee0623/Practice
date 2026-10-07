@@ -24,6 +24,9 @@
 │   └── pj_cloud/
 │       └── RAGstudy    # RAG · Function Calling 학습 (NOTES.md 포함)
 │
+├── AiPublish/
+│   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
+│
 ├── MariaDB/
 │   ├── Study_08_01
 │   ├── Study_08_02
@@ -74,6 +77,7 @@
 - [x] RAG (검색 기반 답변 생성)
 - [x] PDF · 이미지 문서 처리 (텍스트 추출, OCR)
 - [x] Function Calling / Tools (외부 API 연동)
+- [x] RAG 챗봇 웹 앱 (Streamlit, 임베딩 캐시)
 
 **Physical AI & Development Tools**
 - [x] Git / GitHub 버전 관리
