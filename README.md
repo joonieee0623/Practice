@@ -27,7 +27,7 @@
 ├── AiPublish/
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
 │
-├── MariaDB/
+├── MariaDB/            # SQL · ERD 학습
 │   ├── Study_08_01
 │   ├── Study_08_02
 │   └── 자료실
