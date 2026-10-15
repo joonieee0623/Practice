@@ -27,6 +27,11 @@
 ├── AiPublish/
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
 │
+├── LLM_AI/             # GPT API · AI 에이전트 실습
+│   ├── ch01-04         # GPT API 기초 · 프롬프팅 · 멀티턴 · PDF 요약 · Streamlit
+│   ├── ch07            # Function Calling
+│   └── output          # PDF 텍스트 변환 · 요약 결과물
+│
 ├── MariaDB/            # SQL · ERD 학습
 │   ├── Study_08_01
 │   ├── Study_08_02
