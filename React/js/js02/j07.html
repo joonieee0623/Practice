@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for~of문</title>
+</head>
+<body>
+    <script>
+        const arr = [1, '이', 3] //저장소
+        /*
+        const f = () => { //정의
+            for(let i=0; i<arr.length; i++){
+                console.log(arr[i])
+                }
+        }
+        f() //호출
+        */
+
+        (() => { //정의&호출
+            console.log('(1) 고전방법')
+            for(let i=0; i<arr.length; i++){
+                console.log(i, arr[i])
+            }
+
+            console.log('(2) 인덱스까지 추출')
+            for(let i=0; i<arr.length; i++){
+                console.log(i, arr[i])
+            }
+
+            console.log('(3) 값 추출')
+            for(const v of arr){
+                console.log(v)
+            }
+        })()
+    </script>
+</body>
+</html>

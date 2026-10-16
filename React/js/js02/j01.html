@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var vs let</title>
+</head>
+<body>
+    <script>
+        function f0(){
+            globalvar = 1    //글로벌
+            var localvar = 2 //지역
+        }
+        function f1(){
+            f0()
+            console.log(`'globalvar ${globalvar}`)   //가능
+            console.log(`'globalvar ${localvar}`)    //불가
+        }
+        function f2(){
+            //for(var i=0; i<5; i++){
+            for(let i=0; i<5; i++){
+                console.log(`안의 i ${i}`)
+            }
+            console.log(`밖의 i ${i}`)
+        }
+    </script>
+    <div>
+        <button onclick="f1()">버튼1</button>
+        <button onclick="f2()">버튼2</button>
+    </div>
+</body>
+</html>

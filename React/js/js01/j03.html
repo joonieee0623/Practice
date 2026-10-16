@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filter()</title>
+</head>
+<body>
+  <script>
+	//filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[]
+    function ft01(){
+      console.log('1. 기본')
+      let arr = [1,2,3,4,5]
+      let resultArr = arr.filter(function(currentValue, index, useArray){
+        console.log(currentValue, index)
+        return currentValue%2==1
+      })
+      console.log('resultArr', resultArr)
+    }
+    function ft02(){
+      console.log('2. 새로운 객체 배열 생성')
+      const objArr = [
+        {idx:1, name:'홍길동'},
+        {idx:2, name:'이순신'},
+        {idx:3, name:'강감찬'},
+      ]
+      let resultArr = objArr.filter(function(item){
+        return item.idx%2==1
+      })
+      console.log('resultArr', resultArr)
+    }
+  </script>
+  <div>
+		<input type="button" onclick="ft01()" value="filter1">
+		<input type="button" onclick="ft02()" value="filter2">
+	</div>
+</body>
+</html>

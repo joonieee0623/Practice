@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+    <script>
+        (() => {
+            const set = new Set()
+            set.add(1)
+            set.add(2)
+            set.add(3)
+            set.add(2)
+            set.add(1)
+
+            console.log('Size:', set.size) //중복X : 3
+
+            set.forEach((v) => {
+                console.log('v', v)
+            })
+        })();
+
+        console.clear();
+        /////////////////////////////////////////////////////////////////////////////
+
+        const arr = ['봄', '여름', '가을', '겨울', '가을'];
+        (() => {
+            const set = new Set(arr)
+            console.log('Size(1):', set.size)
+            set.delete('여름')
+            console.log('Size(2):', set.size)
+            console.log(`봄 존재 ${set.has('봄')}`)
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function정의 패턴</title>
+</head>
+<body>
+    <script>
+        /*function f1(){                //패턴1
+            for(let i=0; i<5; i++){
+                console.log(`i ${i}`)
+            }
+        }*/
+        /*const f1 = function(){        //패턴2
+            for(let i=0; i<5; i++){
+                console.log(`i ${i}`)
+            }
+        }*/
+        const f1 = () => {for(let i=0; i<5; i++) console.log(`i ${i}`)} //패턴3
+
+        const hello = param => '<strong>'+param+'</strong>' 
+        const f2 = () => {
+            document.getElementById('display').innerHTML = hello('취업')
+        }
+    </script>
+    <div>
+        <button onclick="f1()">버튼1</button>
+        <button onclick="f2()">버튼2</button>
+        <p id="display"></p>
+    </div>
+</body>
+</html>

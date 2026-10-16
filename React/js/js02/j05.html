@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조 분해 할당(Destructuring assingnment)</title>
+</head>
+<body>
+    <script>
+        const f1 = () => {
+            const nameArr = ['길동', '홍']
+            //let firstName = nameArr[0]
+            //let lastName = nameArr[1]
+            let [firstName, lastName] = nameArr
+            console.log(firstName, lastName)
+        }
+        const f2 = () => {
+            let [firstName, lastName] = '순신 이' .split(' ')
+            console.log(firstName, lastName)
+        }
+        const f3 = () => {
+            let [s1, s2] = ['봄', '여름', '가을', '겨울']
+            console.log(s1, s2)
+        }
+          const f4 = () => {
+            let [s1, s2, ...rest] = ['봄', '여름', '가을', '겨울']
+            console.log(s1, s2)
+            console.log(rest)
+        }
+    </script>
+    <button onclick="f1()">버튼1</button>
+    <button onclick="f2()">버튼2</button>
+    <button onclick="f3()">버튼3</button>
+    <button onclick="f4()">버튼4</button>
+</body>
+</html>

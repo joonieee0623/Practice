@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매개변수/아규먼트/파라미터(parameter)</title>
+</head>
+<body>
+    <script>
+        const f1 = (...params) => {
+            let sum = 0
+            for(let v of params){
+                sum += v
+            }
+            return sum
+        }
+        const r1 = f1(1,2,3)
+        console.log(`r1 ${r1}`)
+        const r2 = f1(1,2,3,4,5,6)
+        console.log(`r2 ${r2}`)
+
+        ///////////////////////////////////////////////////////
+        const f2 = (width=2, height=3) => {
+            return width*height
+        }
+        //const r3 = f2(4,5) //20
+        const r3 = f2() //6
+        console.log(`r3 ${r3}`)
+    </script>
+</body>
+</html>

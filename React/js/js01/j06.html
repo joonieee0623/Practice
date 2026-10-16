@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>every()</title>
+</head>
+<body>
+  <script>
+	//every(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean //전부 true인지 검사
+    function e01(){
+      console.log('1. 기본')
+      let arr = [1,2,3,4,5]
+      let result = arr.every(function(cValue){
+        console.log('cValue', cValue)
+        return cValue%2 === 0
+      })
+      console.log('result', result? '짝수만있음':'홀수도포함됨')
+    }
+    function e02(){
+      console.log('2. 응용(학점)')
+      var students = [
+        { idx: 1, name: "홍길동", score: 99 },
+        { idx: 2, name: "이순신", score: 78 },
+        { idx: 3, name: "강감찬", score: 85 },
+        { idx: 4, name: "유관순", score: 61 }
+      ]
+      const isValid = students.every(function(student){
+        return student.score>=0
+      })
+      //console.log('isValid', isValid)
+
+      if(isValid){
+        const resultArr = students.map(function(student){
+          return {
+            name: student.name,
+            score: student.score,
+            grade: getGrade(student.score)
+          }
+        })
+        console.log('resultArr', resultArr)
+      }else{
+        console.log('맞지않는 점수가 포함되어 있음')
+      }
+
+      function getGrade(score) {
+        if(score >= 90) return 'A'
+        if(score >= 80) return 'B'
+        if(score >= 70) return 'C'
+        if(score >= 60) return 'D'
+        return 'F'
+      }
+    }
+  </script>
+  <div>
+    <input type="button" onclick="e01()" value="every01">
+    <input type="button" onclick="e02()" value="every02">
+  </div>
+</body>
+</html>

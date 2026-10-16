@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object속성(property)</title>
+</head>
+<body>
+    <script>
+       const f1 = function(){
+            let sum = 0
+            for(let i=0; i<5; i++){
+                sum += i
+            }
+            console.log(`sum ${sum}`) //가능
+            console.log(`i ${1}`) //불가(for의 지역변수기 때문)
+       }
+       const f2 = function(){
+            const obj = {name:'홍길동', age:20}
+            obj.name = '이순신'; obj.age = 30
+            console.log(`log.name ${obj.name}, obj.age ${obj.age}`)
+       }
+    </script>
+    <div>
+        <button onclick="f1()">버튼1</button>
+        <button onclick="f2()">버튼2</button>
+    </div>
+</body>
+</html>

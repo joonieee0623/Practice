@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title> // 파이썬의 dict
+</head>
+<body>
+    <script>
+        (()=>{ //함수 정의&호출
+            const map = new Map()
+            map.set('name','홍길동')
+            map.set('age', 20)
+            map.set('addr', '서울시')
+
+            console.log('Size:', map.size)
+            console.log('Name:', map.get('name'))
+            console.log('hasAge(1):', map.has('age'))
+            console.log('Del:', map.delete('age'))
+            console.log('hasAge(2):', map.has('age'))
+
+            for(const [k,v] of map){
+                console.log(`k: ${k}, v: ${v}`)
+            }
+        })(); //반드시 ;을 해야한다
+        console.clear(); //반드시 ;
+
+        /////////////////////////////////////////////////////////////////////////
+        (() => {
+            const objKey = {idx:1}
+            const funKey = () => {}
+            const strKey = '스트링'
+            const numKey = 2
+            
+            const map = new Map()
+            map.set(objKey, '홍길동')
+            map.set(funKey, '이순신')
+            map.set(strKey, '강감찬')
+            map.set(numKey, '유관순')
+
+            map.forEach((v, k) => {   //v가 먼저
+                console.log(`k: ${k}, v: ${v}`)
+            })
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스프레드 연산자(Spread operator)</title>
+</head>
+<body>
+    <script>
+        const arr1 = [1,2,3]
+        const arr2 = [4,5,6]
+
+        const f1 = () => {  //대상: 배열
+            const newArr1 = arr1.concat(arr2)
+            console.log('newArr1', newArr1)
+            const newArr2 = [...arr1, ...arr2]
+            console.log('newArr2', newArr2)
+        }
+        const f2 = () => {
+            const str = 'ES'
+            console.log(str[0], str[1])
+            //str.push('6')//불가
+
+            const strArr = [...str]
+            strArr.push('6') //가능(배열로 바꼈기 때문)
+            console.log('strArr', strArr)
+        }
+        const f3 = () => {
+            const min = Math.min(arr1[0], arr2[1], arr1[2]) // 옛방법
+            console.log(`min ${min}`)
+            const max = Math.max(...arr2) // 새방법
+            console.log(`max ${max}`)
+        }
+        const f4 = () => { // 대상: 객체
+            let man = {name: '이순신', addr: '서울'}
+            //man = {name:'이순신', addr:'서울', age: 30} 
+            man = {...man, age: 30} // 뒤에 추가
+            console.log('man', man)
+            //console.log(`man.name ${man.name} man.addr ${man.aderr} man.age ${man.age}`)
+            man = {no:10, ...man} // 앞에 추가
+            console.log('man', man)
+            //console.log(`man.no ${man.no} man.name ${man.name} man.addr ${man.aderr} man.age ${man.age}`)
+        }
+    </script>
+    <button onclick="f1()">버튼1</button>
+    <button onclick="f2()">버튼2</button>
+    <button onclick="f3()">버튼3</button>
+    <button onclick="f4()">버튼4</button>
+</body>
+</html>

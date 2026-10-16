@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map()</title>
+</head>
+<body>
+  <script>
+	//map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[]
+    function m01(){
+      console.log('1. 기본')
+      let arr = [1,2,3,4,5]
+      let resultArr = arr.map(function(currentValue, index, useArray){
+        console.log(currentValue, index)
+        return currentValue*2
+      })
+      console.log('resultArr', resultArr);
+    }
+    function m02(){
+      console.log('2. 새로운 객체 배열 생성')
+      const objArr = [
+        {idx:1, name:'홍길동'},
+        {idx:2, name:'이순신'},
+        {idx:3, name:'강감찬'},
+      ]
+      let resultArr =objArr.map(function(item){
+        let returnObj = {}
+        returnObj['no'] = item.idx
+        returnObj['age'] = item.idx * 10
+        returnObj['writer'] = item.name
+        return returnObj
+      })
+      console.log('resultArr', resultArr);
+    }
+    function m03(){
+      console.log('3. UI에 적용')
+      const objArr = [
+        {idx:1, name:'홍길동'},
+        {idx:2, name:'이순신'},
+        {idx:3, name:'강감찬'},
+      ]
+      let html = objArr.map((item) => {
+        return '<li>'+item.idx+': '+item.name+'</li>'
+      })
+      //document.getElementById('display').innerHTML = html
+      document.getElementById('display').innerHTML = html.join('')
+    }
+  </script>
+  <div>
+    <input type="button" onclick="m01()" value="map1">
+    <input type="button" onclick="m02()" value="map2">
+    <input type="button" onclick="m03()" value="map3">
+  </div>
+  <ul id='display'></ul>
+</body>
+</html>

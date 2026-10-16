@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약속(promise1)</title>
+</head>
+<body>
+    <script>
+        //new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void) => Promise<T> interface Promise<T>
+        const pm = new Promise((resolve, reject) =>{ //객체 생성
+            let flag = false
+            if(flag){
+                resolve('작업 성공')
+            }else{
+                reject('작업 실패')
+            }
+        })
+
+        const f = () => { //객체 사용
+            pm.then(result => {
+                console.log(result)
+            }).catch(err => {
+                console.error(err)
+            })
+        }
+    </script>
+    <button type="button" onclick="f()">버튼</button>
+</body>
+</html>

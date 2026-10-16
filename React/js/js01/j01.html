@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 자동으로 -->
+    <title>forEach()</title>
+</head>
+<body>
+    <script>
+        /*
+        forEach(callbackfn: (value: number, index: number, array: number[]) => void, thisArg?: any): void
+        */
+
+        function f01(){
+            console.log('1. 기본')
+            // let arr = [1,2,3,4,5]
+            let arr = ['봄','여름','가을','겨울']
+            /*arr.forEach(function(currentValue, index, useArray){
+                console.log(`현재값: ${currentValue}, 인덱스: ${index}, 배열 ${useArray}`)
+            })*/
+            /*arr.forEach(function(currentValue, index){
+                console.log(`현재값: ${currentValue}, 인덱스: ${index}`)
+            })*/
+            /*const cf = function(currentValue, index){
+                console.log(`현재값: ${currentValue}, 인덱스: ${index}`)
+            }*/
+            // const cf = (currentValue, index) => console.log(`현재값: ${currentValue}, 인덱스: ${index}`)
+            // arr.forEach(cf)
+
+            arr.forEach((currentValue, index)=>{
+                console.log(`현재값: ${currentValue}`)
+                console.log(`인덱스: ${index}`)
+            })
+        }
+        const f02 = function(){
+            console.log('2. 정수형배열')
+            let arr = [1,2,3,4,5]
+            let sum = 0
+            // const cf = (v) => sum+=v //형태1
+            // const cf = function(v){ sum+=v } //형태2
+            function cf(v){ sum+=v } //형태3
+
+            arr.forEach(cf)
+            console.log(`합계: ${sum}`)
+        }
+        function f03(){
+            console.log('3. 객체형배열')
+            const objArr = [
+                {idx:1, name:'홍길동'},
+                {idx:2, name:'이순신'},
+                {idx:3, name:'강감찬'}
+            ]
+            let html = ''
+            objArr.forEach((item)=>{
+                html += '<li>'+item.idx+'. '+item.name+'</li>'
+            })
+            document.getElementById('display').innerHTML = html
+        }
+    </script>
+    <div>
+        <input type="button" value="forEach1" onclick="f01()">
+        <input type="button" value="forEach2" onclick="f02()">
+        <input type="button" value="forEach3" onclick="f03()">
+    </div>
+    <ul id="display"></ul>
+</body>
+</html>

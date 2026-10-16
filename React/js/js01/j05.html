@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>some()</title>
+</head>
+<body>
+  <script>
+	//some(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean //truthy, falsy //단 하나라도 true인지 검색
+    function s01(){
+      console.log('1. 기본')
+      let arr = [1,2,3,4,5]
+      var result = arr.some(function(cValue){
+        console.log('cValue', cValue)
+        return cValue%2===0 //true인지 아닌지만 판단
+      })
+      console.log('result', result? '짝수포함됨':'짝수없음')
+    }
+    function s02(){		
+      console.log("2. 활성화 된 멤버만 추출하기");
+      const members = [
+        { idx: 1, name: "홍길동", active: false },
+        { idx: 2, name: "이순신", active: true },
+        { idx: 3, name: "강감찬", active: true }
+      ];
+      const isMember = members.some(function(member){
+        return member.active
+      })
+      //console.log('isMember', isMember)
+
+      if(isMember){
+        let resultArr = members.filter(function(member){
+          return member.active === true
+        })
+        console.log("resultArr: ",  resultArr)
+      }else{
+        console.log('모든 멤버가 비활성화 되어있어요')
+      }
+    }
+  </script>
+  <div>
+    <input type="button" onclick="s01()" value="some01">
+    <input type="button" onclick="s02()" value="some02">
+  </div>
+</body>
+</html>

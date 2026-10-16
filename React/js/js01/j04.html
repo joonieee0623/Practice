@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reduce()</title>
+</head>
+<body>
+  <script>
+	//reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U //하나의 값으로 응축
+    function r01(){
+      console.log('1. 기본(초기값X, 반환값X)')
+      let arr = [1,2,3,4,5]
+      arr.reduce(function(pValue, cValue, index){
+        console.log(pValue, cValue, index)
+      })
+    }
+    function r02(){
+      console.log('2. 기본(초기값O, 반환값X)')
+      let arr = [1,2,3,4,5]
+      arr.reduce(function(pValue, cValue, index){
+        console.log(pValue, cValue, index)
+      }, 0)
+    }
+    function r03(){
+      console.log('3. 기본(초기값O, 반환값O)')
+      let arr = [1,2,3,4,5]
+      var result = arr.reduce(function(pValue, cValue, index){
+        console.log(pValue, cValue, index)
+        return pValue + 10 //다음 pValue 값
+      }, 0)
+      console.log('result', result)
+    }
+    function r04(){
+      console.log('4. 배열 요소의 합계')
+      let arr = [1,2,3,4,5]
+      var result = arr.reduce(function(pValue, cValue){
+        console.log(pValue, cValue)
+        return pValue+cValue
+      })
+      console.log('result', result)
+    }
+    function r05(){
+      console.error("5. 중복값 제거")
+		  var arr = [0,1,2,3,3,3,4,5,5,6,6]
+      var resultArr = arr.reduce(function(pValue, cValue){
+        if(pValue.indexOf(cValue) == -1){ //누적값 배열에 현재값이 없다면
+          pValue.push(cValue)             //추가
+        }
+        return pValue
+      }, [])
+      console.log("resultArr", resultArr)
+    }
+  </script>
+  <div>
+		<input type="button" onclick="r01()" value="reduce1">
+		<input type="button" onclick="r02()" value="reduce2">
+    <input type="button" onclick="r03()" value="reduce3">
+    <input type="button" onclick="r04()" value="reduce4">
+    <input type="button" onclick="r05()" value="reduce5">
+  </div>
+</body>
+</html>

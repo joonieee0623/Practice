@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약속(promise2: async/await)</title>
+</head>
+<body>
+    <script>
+        function getPm(){ //promise제공함수
+            const pm = new Promise(resolve => {
+                setTimeout(()=>{
+                    resolve('3초후에 작업 성공')
+                }, 3000)
+            })
+            return pm
+        }
+
+        //(1) 방식1 ( then(), catch(), finally() )
+        const f1 = () => {
+           getPm().then(result => {
+              console.log(result)
+           })
+        }
+
+        //(2) 방식2 ( async/await ) : 추천
+        const f2 = async() => {
+            const result = await getPm()
+            console.log(result)
+        }
+    </script>
+    <button type="button" onclick="f1()">호출1</button>
+    <button type="button" onclick="f2()">호출2</button>
+</body>
+</html>
