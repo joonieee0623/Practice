@@ -47,12 +47,16 @@
 ├── Projects/
 │   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
 │
-└── Python_Advanced/
-    ├── day01_pymysql
-    ├── day02_numpy
-    ├── day03_pandas
-    ├── day04_matplot_seaborn
-    └── day05_crawling
+├── Python_Advanced/
+│   ├── day01_pymysql
+│   ├── day02_numpy
+│   ├── day03_pandas
+│   ├── day04_matplot_seaborn
+│   └── day05_crawling
+│
+└── React/
+    └── js/             # JavaScript 기초 (js01, js02)
+
 ```
 
 ## 🧩 다루는 것
