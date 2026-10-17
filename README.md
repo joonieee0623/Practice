@@ -28,7 +28,7 @@
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
 │
 ├── FastAPI/            # FastAPI 기초 실습
-│   └── day01           # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드
+│   └── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드
 │
 ├── LLM_AI/             # GPT API · AI 에이전트 실습
 │   ├── ch01-04         # GPT API 기초 · 프롬프팅 · 멀티턴 · PDF 요약 · Streamlit
