@@ -40,13 +40,6 @@
 │   ├── Study_08_02
 │   └── 자료실
 │
-├── Python/
-│   ├── day01
-│   ├── day02
-│   ├── day03
-│   ├── day04
-│   └── 자료실
-│
 ├── Projects/
 │   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
 │
