@@ -5,7 +5,7 @@
 
 ### ⏱️ **6개월 단기 몰입**
 - **기간** : `2026.08` ~ `2027.01` (6개월)
-- **사용 환경** : Python, MariaDB, Django, Git, VSCode (Windows / macOS)
+- **사용 환경** : Python, MariaDB, Django, FastAPI, React, Jupyter, Git, VSCode (Windows / macOS)
 
 ---
 
@@ -28,7 +28,7 @@
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
 │
 ├── FastAPI/            # FastAPI 기초 실습
-│   └── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드
+│   └── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드 · LangChain 멀티턴
 │
 ├── LLM_AI/             # GPT API · AI 에이전트 실습
 │   ├── ch01-04         # GPT API 기초 · 프롬프팅 · 멀티턴 · PDF 요약 · Streamlit
@@ -83,12 +83,13 @@
 - [x] PDF · 이미지 문서 처리 (텍스트 추출, OCR)
 - [x] Function Calling / Tools (외부 API 연동)
 - [x] RAG 챗봇 웹 앱 (Streamlit, 임베딩 캐시)
+- [x] LangChain 대화 기록 관리 (멀티턴)
 
 **Physical AI & Development Tools**
 - [x] Git / GitHub 버전 관리
 - [ ] Linux 환경 & Shell Script
 - [ ] Serial Communication / 센서 데이터 수집 (PySerial, ROS2)
-- [ ] Lightweight API (FastAPI)
+- [x] FastAPI 기초 (라우팅 · 요청/응답)
 
 ---
 
