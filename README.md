@@ -22,7 +22,21 @@
 ```
 ├── AiCloud/
 │   └── pj_cloud/
-│       └── RAGstudy    # RAG · Function Calling 학습 (NOTES.md 포함)
+│       └── RAGstudy/               # RAG · Function Calling 학습 (NOTES.md 포함)
+│           ├── app
+│           ├── t11_db              # 임베딩 · MariaDB 벡터 저장
+│           ├── t12_rag             # RAG 기본
+│           ├── t13_rag_pdf         # PDF RAG
+│           ├── t14_rag_pdf_ocr     # PDF · 이미지 OCR RAG
+│           ├── t15_rag_pure        # 라이브러리 없이 구현한 RAG
+│           ├── t16_rag_fc          # RAG + Function Calling
+│           ├── t17_rag_tools       # RAG + Tools
+│           ├── t18_agent           # 에이전트 기초
+│           ├── t19_agent_langchain # LangChain 에이전트
+│           ├── t20_agent_routerchain       # Router Chain 에이전트
+│           ├── t21_agent_routerchain_tool  # Router Chain + Tool
+│           ├── t31_rag_csv         # CSV RAG
+│           └── t32_rag_md          # Markdown RAG
 │
 ├── AiPublish/
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
@@ -51,6 +65,7 @@
 │   └── day05_crawling
 │
 └── React/
+    ├── base            # React 기초 실습 (Vite)
     └── js/             # JavaScript 기초 (js01, js02)
 
 ```
