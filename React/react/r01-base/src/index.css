@@ -1,0 +1,9 @@
+.hobby{
+  color:blue;
+}
+#hobbySub{
+  font-weight: bold; font-size: 1.5em;
+}
+.warnings{
+  color:white;background-color: red;
+}
