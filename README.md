@@ -22,10 +22,10 @@
 ```
 ├── AiCloud/
 │   └── pj_cloud/
-│       └── RAGstudy        # RAG · Agent 학습 t11~t32 (임베딩 → RAG → Function Calling → LangChain 에이전트, NOTES.md 포함)
+│       └── RAGstudy        # RAG · Agent 학습(임베딩 → RAG → Function Calling → LangChain 에이전트)
 │
 ├── AiPublish/
-│   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹 · NOTES.md 포함)
+│   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹)
 │
 ├── FastAPI/            # FastAPI 기초 실습
 │   └── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드 · LangChain 멀티턴
@@ -43,16 +43,11 @@
 ├── Projects/
 │   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
 │
-├── Python_Advanced/
-│   ├── day01_pymysql
-│   ├── day02_numpy
-│   ├── day03_pandas
-│   ├── day04_matplot_seaborn
-│   └── day05_crawling
+├── Python_Advanced/    # pymysql,numpy,pandas,matplot_seaborn,crawling
 │
 └── React/
     ├── base            # React 기초 실습 (Vite)
-    └── js/             # JavaScript 기초 (js01, js02)
+    └── js/             # JavaScript 기초
 
 ```
 
