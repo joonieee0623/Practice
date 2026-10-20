@@ -27,18 +27,16 @@
 ├── AiPublish/
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹)
 │
-├── FastAPI/            # FastAPI 기초 실습
-│   └── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드 · LangChain 멀티턴
+├── FastAPI/            # FastAPI 실습
+│   ├── basics          # 라우팅 · 경로/쿼리 파라미터 · POST/PUT · 상태 코드 · LangChain 멀티턴
+│   └── ReactFast/      # FastAPI + React 게시판 (CRUD)
+│       ├── backend     # FastAPI 게시판 API (models · schemas · crud · routes)
+│       └── frontend    # React(Vite) 게시판 화면 (목록 · 상세 · 작성 · 수정 · 검색)
 │
 ├── LLM_AI/             # GPT API · AI 에이전트 실습
 │   ├── ch01-04         # GPT API 기초 · 프롬프팅 · 멀티턴 · PDF 요약 · Streamlit
 │   ├── ch07            # Function Calling
 │   └── output          # PDF 텍스트 변환 · 요약 결과물
-│
-├── MariaDB/            # SQL · ERD 학습
-│   ├── Study_08_01
-│   ├── Study_08_02
-│   └── 자료실
 │
 ├── Projects/
 │   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
