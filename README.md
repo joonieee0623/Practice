@@ -22,7 +22,7 @@
 ```
 ├── AiCloud/
 │   └── pj_cloud/
-│       └── RAGstudy        # RAG · Agent 학습(임베딩 → RAG → Function Calling → LangChain 에이전트)
+│       └── RAGstudy    # RAG · Agent 학습(임베딩 → RAG → Function Calling → LangChain 에이전트)
 │
 ├── AiPublish/
 │   └── pj_publish      # RAG 챗봇 (사내 규정 CSV, Streamlit 웹)
@@ -96,8 +96,6 @@
 
 ### 🚀 2027년 상반기 목표 (기사 & 전문가)
 - [ ] **SQLP** (SQL 전문가)
-- [ ] **ADP** (데이터분석 전문가)
-- [ ] **DAP** (데이터아키텍처 전문가)
 - [ ] **정보처리기사**
 ---
 
