@@ -39,7 +39,8 @@
 │   └── output          # PDF 텍스트 변환 · 요약 결과물
 │
 ├── Projects/
-│   └── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
+│   ├── moa_trip        # Django 팀 프로젝트 (여행 정보 플랫폼)
+│   └── seoul_apt_price # 서울 아파트 실거래가 예측 (모델 생성 · 예측 앱, 개인 세미 프로젝트)
 │
 ├── Python_Advanced/    # pymysql,numpy,pandas,matplot_seaborn,crawling
 │
